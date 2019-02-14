@@ -2,7 +2,7 @@
 	"root" : ".",
 	"author" : "林钦",
 	"plugins" : [
-		"highlight",
+		"-highlight",
 		"prism",
 		"-sharing",
 		"fontsettings",
@@ -12,8 +12,8 @@
 		"toggle-chapters",
 		"splitter",
 		"emphasize",
-		"tbfed-pagefooter"
-		
+		"tbfed-pagefooter",
+		"image-captions"
 
 	],
 	"pluginsConfig" : {
@@ -27,9 +27,12 @@
 			]
 		},
 		"tbfed-pagefooter" : {
-			"copyright":"Copyright &copy LinQin",
+
 			"modify_label" : "最后修订时间：",
 			"modify_format" : "YYYY-MM-DD HH:mm:ss"
+		},
+		"image-captions" : {
+			"caption" : "Image _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_"
 		}
 
 	}
