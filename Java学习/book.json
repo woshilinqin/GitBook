@@ -1,0 +1,36 @@
+{
+	"root" : ".",
+	"author" : "林钦",
+	"plugins" : [
+		"highlight",
+		"prism",
+		"-sharing",
+		"fontsettings",
+		"-lunr",
+		"-search",
+		"search-pro",
+		"toggle-chapters",
+		"splitter",
+		"emphasize",
+		"tbfed-pagefooter"
+		
+
+	],
+	"pluginsConfig" : {
+		"search-pro" : {
+			"cutWordLib" : "nodejieba",
+			"defineWord" : ["Gitbook Use"]
+		},
+		"prism" : {
+			"css" : [
+				"prismjs/themes/prism-tomorrow.css"
+			]
+		},
+		"tbfed-pagefooter" : {
+			"copyright":"Copyright &copy LinQin",
+			"modify_label" : "最后修订时间：",
+			"modify_format" : "YYYY-MM-DD HH:mm:ss"
+		}
+
+	}
+}
