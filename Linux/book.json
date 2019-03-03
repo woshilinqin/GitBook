@@ -12,7 +12,14 @@
 		"toggle-chapters",
 		"splitter",
 		"emphasize",
-		"tbfed-pagefooter"
+		"tbfed-pagefooter",
+		
+		"back-to-top-button",
+		"copy-code-button",
+		"page-toc-button",
+		"pageview-count",
+		"popup",
+		"image-captions"
 		
 
 	],
@@ -30,6 +37,13 @@
 			"copyright":"Copyright &copy LinQin",
 			"modify_label" : "最后修订时间：",
 			"modify_format" : "YYYY-MM-DD HH:mm:ss"
+		},
+		"page-toc-button" : {
+			"maxTocDepth" : 2,
+			"minTocSize" : 2
+		},
+		"image-captions" : {
+			"caption" : "Image - _CAPTION_"
 		}
 
 	}
