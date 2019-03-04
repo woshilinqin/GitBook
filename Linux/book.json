@@ -13,14 +13,14 @@
 		"splitter",
 		"emphasize",
 		"tbfed-pagefooter",
-		
+
 		"back-to-top-button",
 		"copy-code-button",
-		"page-toc-button",
+
 		"pageview-count",
-		"popup",
-		"image-captions"
-		
+
+		"image-captions",
+		"anchor-navigation-ex"
 
 	],
 	"pluginsConfig" : {
@@ -34,7 +34,7 @@
 			]
 		},
 		"tbfed-pagefooter" : {
-			"copyright":"Copyright &copy LinQin",
+			"copyright" : "Copyright &copy LinQin",
 			"modify_label" : "最后修订时间：",
 			"modify_format" : "YYYY-MM-DD HH:mm:ss"
 		},
@@ -44,6 +44,15 @@
 		},
 		"image-captions" : {
 			"caption" : "Image - _CAPTION_"
+		},
+		"anchor-navigation-ex" : {
+			"showLevel" : false,
+			"multipleH1" : false,
+			"isShowTocTitleIcon" : true,
+			"showGoTop" : false,
+			"tocLevel1Icon" : "fa fa-hand-o-right",
+			"tocLevel2Icon" : "fa fa-hand-o-right",
+			"tocLevel3Icon" : "fa fa-hand-o-right"
 		}
 
 	}
