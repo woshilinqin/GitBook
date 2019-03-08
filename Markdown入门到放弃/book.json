@@ -2,7 +2,7 @@
 	"root" : ".",
 	"author" : "林钦",
 	"plugins" : [
-		"-highlight",
+		"highlight",
 		"prism",
 		"-sharing",
 		"fontsettings",
@@ -13,7 +13,14 @@
 		"splitter",
 		"emphasize",
 		"tbfed-pagefooter",
-		"image-captions"
+
+		"back-to-top-button",
+		"copy-code-button",
+
+		"pageview-count",
+
+		"image-captions",
+		"anchor-navigation-ex"
 
 	],
 	"pluginsConfig" : {
@@ -27,12 +34,25 @@
 			]
 		},
 		"tbfed-pagefooter" : {
-
+			"copyright" : "Copyright &copy LinQin",
 			"modify_label" : "最后修订时间：",
 			"modify_format" : "YYYY-MM-DD HH:mm:ss"
 		},
+		"page-toc-button" : {
+			"maxTocDepth" : 2,
+			"minTocSize" : 2
+		},
 		"image-captions" : {
-			"caption" : "Image _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_"
+			"caption" : "Image - _CAPTION_"
+		},
+		"anchor-navigation-ex" : {
+			"showLevel" : false,
+			"multipleH1" : false,
+			"isShowTocTitleIcon" : true,
+			"showGoTop" : false,
+			"tocLevel1Icon" : "fa fa-hand-o-right",
+			"tocLevel2Icon" : "fa fa-hand-o-right",
+			"tocLevel3Icon" : "fa fa-hand-o-right"
 		}
 
 	}
