@@ -5,6 +5,17 @@
 ```shell
 wget [url] -P [下载目录]
 ```
+###### curl
+
+-L 重定向发送请求
+
+-O 使用URL中默认的文件名保存文件到本地
+
+```shell
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-6.6.2-linux-x86_64.tar.gz
+```
+
+
 
 ###### post发送xml
 
@@ -72,4 +83,12 @@ free -g
 
 > yum install ntpdate
 > ntpdate -u ntp.api.bz  上海时间
+
+###### yum
+
+`-y`表示免确认
+
+```shell
+yum install -y zip unzip
+```
 
