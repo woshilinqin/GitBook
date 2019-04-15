@@ -11,8 +11,16 @@ wget [url] -P [下载目录]
 
 -O 使用URL中默认的文件名保存文件到本地
 
+-o 下载，需要指定下载文件名
+
+-i 显示全部信息（头信息，返回内容）
+
 ```shell
 curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-6.6.2-linux-x86_64.tar.gz
+```
+
+```
+curl -L -o xxx.tar.gz https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-6.6.2-linux-x86_64.tar.gz
 ```
 
 
@@ -90,5 +98,33 @@ free -g
 
 ```shell
 yum install -y zip unzip
+```
+
+###### rpm
+
+搜索 jdk 的安装包。
+
+```shell
+rpm -qa | grep jdk
+```
+
+卸载原来的jdk， rpm -e --nodeps +名称（`--nodeps`强制 `-e`卸载）
+
+```shell
+rpm -e --nodeps java-1.7.0-openjdk-1.7.0.99-2.6.5.1.el6.i686
+```
+
+安装，注意版本位数。
+
+```shell
+rpm -ivh /home/jdk-8u144-linux-x64.rpm
+```
+
+```shell
+rpm -ivh xxxxx --nodeps --force              不检查依赖关系，强制安装
+```
+
+```shell
+rpm --force -ivh your-package.rpm  		     强制安装：安装出现...conflict with ... 有冲突可以加上
 ```
 

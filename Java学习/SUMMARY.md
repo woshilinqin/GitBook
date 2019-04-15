@@ -22,4 +22,11 @@
   * [9.毫秒转换为秒](代码记录\9.毫秒转换为秒.md)
   * [10.字符串写成流](代码记录\10.字符串写成流.md)
   * [11.File路径新建文件夹创建](代码记录\11.File路径新建文件夹创建.md)
+* [JVM](JVM\README.md)
+  * [接口响应慢排查](JVM\系统缓慢JVM排查.md)
+* [JDK8](JDK8\README.md)
+  * [Stream](JDK8\Stream流.md)
+  * [Collect](JDK8\collect.md)
+* [IDEA学习](IDEA学习\README.md)
+  * [IDEA远程debug-jar](IDEA学习\IDEA远程debug-jar.md)
 
