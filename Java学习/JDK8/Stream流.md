@@ -37,7 +37,7 @@ Stream.of(stringCollection).forEach(System.out::println);
             });
 ```
 
- 
+
 ```java
 //间隔输出filter、foreach
 Stream.of("d2", "a2", "b1", "b3", "c")
@@ -135,6 +135,8 @@ Predicate predicate = new Predicate() {
   ```
 
 - 3.Map转换
+
+  这个 map 转换是不会去重的，和 hashmap 不一样。
 
   ```java
   stringCollection.stream().map(String::toUpperCase).sorted((a,b) -> b.compareTo(a)).forEach(System.out::println);

@@ -8,6 +8,8 @@
   * [idea gitstash](git的使用\idea gitstash.md)
   * [linux安装git服务器](git的使用\linux安装git服务器\安装.md)
     * [安装新版git](git的使用\linux安装git服务器\安装新版git.md)
+  * [安装gitlab](git的使用\安装gitlab\README.md)
+    * [CentOS7安装维护Gitlab](安装gitlab\CentOS7安装维护Gitlab.md)
 * [基础知识](README.md)
   * [泛型中占位符T和有什么区别](基础知识\泛型中占位符T和有什么区别.md)
 * [代码记录](代码记录\README.md)
@@ -29,4 +31,5 @@
   * [Collect](JDK8\collect.md)
 * [IDEA学习](IDEA学习\README.md)
   * [IDEA远程debug-jar](IDEA学习\IDEA远程debug-jar.md)
+  * [发布应用到 tomcat](IDEA学习\发布应用到 tomcat.md)
 
