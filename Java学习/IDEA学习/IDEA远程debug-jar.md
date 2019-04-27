@@ -24,3 +24,13 @@ Listening for transport dt_socket at address: 5005
 
 ![1554988102257](assets/1554988102257.png)
 
+
+
+### jvisualVM 远程监控
+
+启动参数增加 jvm 监控
+
+```shell
+-Djava.rmi.server.hostname=192.168.13.52 -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=1099 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false
+```
+
