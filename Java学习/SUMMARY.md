@@ -32,4 +32,6 @@
 * [IDEA学习](IDEA学习\README.md)
   * [IDEA远程debug-jar](IDEA学习\IDEA远程debug-jar.md)
   * [发布应用到 tomcat](IDEA学习\发布应用到 tomcat.md)
+  * [IDEA中使用 Debug](IDEA学习\IDEA中使用 Debug .md) 
+  * [IDEA好用插件](IDEA学习\IDEA好用插件.md)
 

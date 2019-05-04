@@ -37,3 +37,23 @@ Git add
 git remote -v
 ```
 
+
+
+###### 清空远程仓库
+
+```
+git rm -r --cached .
+```
+
+```
+git add .
+```
+
+```
+git commit -m ".gitignore is now working"
+```
+
+```
+git push -u origin master
+```
+
