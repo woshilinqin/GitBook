@@ -136,7 +136,7 @@ Predicate predicate = new Predicate() {
 
 - 3.Map转换
 
-  这个 map 转换是不会去重的，和 hashmap 不一样。
+  这个 map 转换是`不会去重`的，和 hashmap 不一样。
 
   ```java
   stringCollection.stream().map(String::toUpperCase).sorted((a,b) -> b.compareTo(a)).forEach(System.out::println);
