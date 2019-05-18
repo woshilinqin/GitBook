@@ -1,12 +1,12 @@
 ### SpringBean的生命周期
 
-Spring Bean 生命周期比较复杂，可以分为创建和销毁两个过程。
+Spring Bean 生命周期比较复杂，可以分为创建和销毁两个过程。其中，注解`@Bean`加载的自定义 bean 也会实现BeanPostProcessor 的前后置方法。
 
 **创建**
 
 - 实现`InitializingBean`接口会在初始化时执行一次。
 - 实现`BeanFactoryPostProcessor`接口会在初始化后执行一次。
-- 实现`BeanPostProcessor`接口会在初始化每个接口时各执行一次对应实现的前后置方法。
+- 实现`BeanPostProcessor`接口会在初始化每个接口时`各`执行一次对应实现的前后置方法。
 - 实现`DisposableBean`接口会在容器关闭时执行一次销毁方法。
 
 ```java
