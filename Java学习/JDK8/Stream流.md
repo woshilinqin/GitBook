@@ -170,6 +170,17 @@ Predicate predicate = new Predicate() {
   collect.forEach(System.out::println);
   ```
 
-  
+- 8.flatMap 拆开
+
+  ```java
+   // flatMap 就是拆开
+          Stream<List<Integer>> inputStream =
+                  Stream.of(Arrays.asList(1), Arrays.asList(2, 3), Arrays.asList(4, 5, 6));
+          inputStream.flatMap(childList -> childList.stream()).collect(Collectors.toList());
+  ```
+
+  图解：
+
+  ![1558192452641](assets/1558192452641.png)
 
 

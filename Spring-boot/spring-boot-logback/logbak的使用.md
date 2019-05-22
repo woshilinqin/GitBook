@@ -37,14 +37,17 @@
         </triggeringPolicy>
         <!--拦截，把高于warn的日志过滤掉。-->
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
-            <level>WARN</level>
+            <level>INFO</level>
             <onMatch>ACCEPT</onMatch>
             <onMismatch>DENY</onMismatch>
         </filter>
     </appender>
 
     <!--logback.LogbackDemo：类的全路径 -->
-    <logger name="haha" level="INFO" additivity="false">
+    <logger name="haha" level="INFO" additivity="true">
+        <appender-ref ref="FILE"/>
+    </logger>
+    <logger name="com.controller.TestController" level="INFO" additivity="true">
         <appender-ref ref="FILE"/>
     </logger>
     <!-- 日志输出级别 -->
@@ -64,12 +67,13 @@
 ```java
 @RestController
 public class TestController {
-
     private Logger logger = LoggerFactory.getLogger("haha");
+    private Logger logger1 = LoggerFactory.getLogger(TestController.class);
 
     @RequestMapping("/hello")
     public String hello () {
         logger.info("hello world!");
+        logger1.info("hello world!");
         return "hello";
     }
 }
