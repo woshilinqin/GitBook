@@ -1,60 +1,36 @@
-# 快速开始
+## Generator
 
 我们将通过一个简单的 Demo 来阐述 MyBatis-Plus 的强大功能，在此之前，我们假设您已经：
 
-- 拥有 Java 开发环境以及相应 IDE
-- 熟悉 Spring Boot
-- 熟悉 Maven
-
-------
 
 现有一张 `User` 表，其表结构如下：
 
-| id   | name   | age  | email              |
-| ---- | ------ | ---- | ------------------ |
-| 1    | Jone   | 18   | test1@baomidou.com |
-| 2    | Jack   | 20   | test2@baomidou.com |
-| 3    | Tom    | 28   | test3@baomidou.com |
-| 4    | Sandy  | 21   | test4@baomidou.com |
-| 5    | Billie | 24   | test5@baomidou.com |
+| id   | name   | age  | config             | sex  |
+| ---- | ------ | ---- | ------------------ | ---- |
+| 1    | Jone   | 18   | test1@baomidou.com | 1    |
+| 2    | Jack   | 20   | test2@baomidou.com | 1    |
+| 3    | Tom    | 28   | test3@baomidou.com | 1    |
+| 4    | Sandy  | 21   | test4@baomidou.com | 0    |
+| 5    | Billie | 24   | test5@baomidou.com | 0    |
 
 其对应的数据库 Schema 脚本如下：
 
 ```sql
-DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS `typehandle`;
 
-CREATE TABLE user
-(
-	id BIGINT(20) NOT NULL COMMENT '主键ID',
-	name VARCHAR(30) NULL DEFAULT NULL COMMENT '姓名',
-	age INT(11) NULL DEFAULT NULL COMMENT '年龄',
-	email VARCHAR(50) NULL DEFAULT NULL COMMENT '邮箱',
-	PRIMARY KEY (id)
-);
+CREATE TABLE `typehandle` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `name` varchar(30) DEFAULT '""' COMMENT 'name',
+  `sex` tinyint(1) DEFAULT NULL COMMENT '性别',
+  `config` text COMMENT '配置，保存json格式',
+  `age` int(11) DEFAULT NULL COMMENT '年龄',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 ```
-
-其对应的数据库 Data 脚本如下：
-
-```sql
-DELETE FROM user;
-
-INSERT INTO user (id, name, age, email) VALUES
-(1, 'Jone', 18, 'test1@baomidou.com'),
-(2, 'Jack', 20, 'test2@baomidou.com'),
-(3, 'Tom', 28, 'test3@baomidou.com'),
-(4, 'Sandy', 21, 'test4@baomidou.com'),
-(5, 'Billie', 24, 'test5@baomidou.com');
-```
-
-------
-
-Question
-
-如果从零开始用 MyBatis-Plus 来实现该表的增删改查我们需要做什么呢？
 
 ## [#](https://mp.baomidou.com/guide/quick-start.html#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%B7%A5%E7%A8%8B)初始化工程
 
-创建一个空的 Spring Boot 工程（工程将以 H2 作为默认数据库进行演示）
+创建一个空的 Spring Boot 工程（工程将以 Mysql 作为默认数据库进行演示）
 
 TIP
 
@@ -73,9 +49,7 @@ TIP
 </parent>
 ```
 
-引入 `spring-boot-starter`、`spring-boot-starter-test`、`mybatis-plus-boot-starter`、`lombok`、`h2` 依赖：
-
- 
+引入 `spring-boot-starter`、`spring-boot-starter-test`、`mybatis-plus-boot-starter`、`lombok`、`Mysql` 依赖：
 
 ```xml
 <dependencies>
@@ -93,42 +67,66 @@ TIP
         <artifactId>lombok</artifactId>
         <optional>true</optional>
     </dependency>
-    <dependency>
-        <groupId>com.baomidou</groupId>
-        <artifactId>mybatis-plus-boot-starter</artifactId>
-        <version>3.1.0</version>
-    </dependency>
-    <dependency>
-        <groupId>com.h2database</groupId>
-        <artifactId>h2</artifactId>
-        <scope>runtime</scope>
-    </dependency>
+    
+    <!-- 引入了这个依赖，不再需要mybatis-spring、MyBatis 依赖 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+            <version>2.1</version>
+        </dependency>
 </dependencies>
 ```
 
 ## [#](https://mp.baomidou.com/guide/quick-start.html#%E9%85%8D%E7%BD%AE)配置
 
-在 `application.yml` 配置文件中添加 H2 数据库的相关配置：
+在 `application.yml` 配置文件中添加 Mysql 数据库的相关配置：
 
 ```yaml
 # DataSource Config
 spring:
   datasource:
-    driver-class-name: org.h2.Driver
-    schema: classpath:db/schema-h2.sql
-    data: classpath:db/data-h2.sql
-    url: jdbc:h2:mem:test
+    password: root
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mybatis?serverTimezone=GMT%2B8
     username: root
-    password: test
+    hikari:
+      connection-timeout: 30000
+      auto-commit: true
+      max-lifetime: 1800000
+      pool-name: DatebookHikariCP
+      minimum-idle: 5
+      connection-test-query: SELECT 1
+      idle-timeout: 30000
+      maximum-pool-size: 15
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.pojo
+logging:
+  level:
+    com:
+      dao:
+        UserMapper: debug
+
 ```
 
 在 Spring Boot 启动类中添加 `@MapperScan` 注解，扫描 Mapper 文件夹：
 
- 
-
 ```java
 @SpringBootApplication
-@MapperScan("com.baomidou.mybatisplus.samples.quickstart.mapper")
 public class Application {
 
     public static void main(String[] args) {
@@ -138,73 +136,101 @@ public class Application {
 }
 ```
 
-## [#](https://mp.baomidou.com/guide/quick-start.html#%E7%BC%96%E7%A0%81)编码
+## 代码生成
 
-编写实体类 `User.java`（此处使用了 [Lombok](https://www.projectlombok.org/) 简化代码）
-
-```java
-@Data
-public class User {
-    private Long id;
-    private String name;
-    private Integer age;
-    private String email;
-}
-```
-
-编写Mapper类 `UserMapper.java`
+编写实体类 `CodeGenerator.java`
 
 ```java
-public interface UserMapper extends BaseMapper<User> {
+import com.baomidou.mybatisplus.annotation.DbType;
+import com.baomidou.mybatisplus.generator.AutoGenerator;
+import com.baomidou.mybatisplus.generator.InjectionConfig;
+import com.baomidou.mybatisplus.generator.config.*;
+import com.baomidou.mybatisplus.generator.config.po.TableInfo;
+import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
-}
-```
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-## [#](https://mp.baomidou.com/guide/quick-start.html#%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8)开始使用
+public class CodeGenerator {
+    public static void main(String[] args) {
+        AutoGenerator mpg = new AutoGenerator();
 
-添加测试类，进行功能测试：
+        // 配置数据源
+        DataSourceConfig dataSourceConfig = new DataSourceConfig();
+        dataSourceConfig.setDbType(DbType.MYSQL);
+        dataSourceConfig.setUrl("jdbc:mysql://localhost:3306/mybatis?serverTimezone=GMT%2B8");
+        dataSourceConfig.setDriverName("com.mysql.jdbc.Driver");
+        dataSourceConfig.setUsername("root");
+        dataSourceConfig.setPassword("root");
 
-```java
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class SampleTest {
+        // 设置一些全局的配置：
+        GlobalConfig gc = new GlobalConfig();
+//        System.getProperty("user.dir") project地址，我这是模块路径
+        gc.setOutputDir(System.getProperty("user.dir")  + "/spring-boot-mybatis-typehandler/src/main/java");
+        gc.setFileOverride(true);
+        gc.setActiveRecord(true);
+        gc.setEnableCache(false);// XML 二级缓存
+        gc.setBaseResultMap(true);// XML ResultMap
+        gc.setBaseColumnList(true);// XML columList
+        gc.setAuthor("linqin");
+        gc.setMapperName("%sMapper");
+        gc.setXmlName("%sMapper");
+        gc.setServiceName("%sService");
+        gc.setServiceImplName("%sServiceImpl");
+        gc.setControllerName("%sController");
 
-    @Autowired
-    private UserMapper userMapper;
+        StrategyConfig strategy = new StrategyConfig();
+        //strategy.setTablePrefix(new String[] { "SYS_" });// 此处可以修改为您的表前缀
+        strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
+        strategy.setInclude(new String[]{"typehandle"}); // 需要生成的表
 
-    @Test
-    public void testSelect() {
-        System.out.println(("----- selectAll method test ------"));
-        List<User> userList = userMapper.selectList(null);
-        Assert.assertEquals(5, userList.size());
-        userList.forEach(System.out::println);
+//        xml文件配置
+        PackageConfig pc = new PackageConfig();
+        pc.setParent("com");
+        pc.setController("controller");
+        pc.setService("service");
+        pc.setServiceImpl("service.impl");
+        pc.setEntity("entity");
+        pc.setMapper("dao");
+
+        InjectionConfig cfg = new InjectionConfig() {
+            @Override
+            public void initMap() {
+                Map<String, Object> map = new HashMap<String, Object>();
+                map.put("abc", this.getConfig().getGlobalConfig().getAuthor() + "-rb");
+                this.setMap(map);
+            }
+        };
+
+        //xml生成路径
+        List<FileOutConfig> focList = new ArrayList<>();
+        focList.add(new FileOutConfig("/templates/mapper.xml.vm") {
+            @Override
+            public String outputFile(TableInfo tableInfo) {
+                return System.getProperty("user.dir") + "/spring-boot-mybatis-typehandler/src/main/resources/" + "/mybatis/tables/" + tableInfo.getEntityName() + "Mapper.xml";
+            }
+        });
+        cfg.setFileOutConfigList(focList);
+        mpg.setCfg(cfg);
+
+        // 关闭默认 xml 生成，调整生成 至 根目录
+        TemplateConfig tc = new TemplateConfig();
+        tc.setXml(null);
+
+        mpg.setDataSource(dataSourceConfig);			//数据源配置
+        mpg.setGlobalConfig(gc);		//全局配置
+        mpg.setStrategy(strategy);		//生成策略配置
+        mpg.setPackageInfo(pc);			//包配置
+        mpg.setCfg(cfg);				//xml配置
+        mpg.setTemplate(tc);			//
+        // 执行生成
+        mpg.execute();
+
     }
-
 }
+
 ```
 
-TIP
-
-UserMapper 中的 `selectList()` 方法的参数为 MP 内置的条件封装器 `Wrapper`，所以不填写就是无任何条件
-
-控制台输出：
-
-```text
-User(id=1, name=Jone, age=18, email=test1@baomidou.com)
-User(id=2, name=Jack, age=20, email=test2@baomidou.com)
-User(id=3, name=Tom, age=28, email=test3@baomidou.com)
-User(id=4, name=Sandy, age=21, email=test4@baomidou.com)
-User(id=5, name=Billie, age=24, email=test5@baomidou.com)
-```
-
-TIP
-
-完整的代码示例请移步：[Spring Boot 快速启动示例](https://github.com/baomidou/mybatis-plus-samples/tree/master/mybatis-plus-sample-quickstart) | [Spring MVC 快速启动示例](https://github.com/baomidou/mybatis-plus-samples/tree/master/mybatis-plus-sample-quickstart-springmvc)
-
-## [#](https://mp.baomidou.com/guide/quick-start.html#%E5%B0%8F%E7%BB%93)小结
-
-通过以上几个简单的步骤，我们就实现了 User 表的 CRUD 功能，甚至连 XML 文件都不用编写！
-
-从以上步骤中，我们可以看到集成`MyBatis-Plus`非常的简单，只需要引入 starter 工程，并配置 mapper 扫描路径即可。
-
-但 MyBatis-Plus 的强大远不止这些功能，想要详细了解 MyBatis-Plus 的强大功能？那就继续往下看吧！
+直接 `Run` 运行即可，目录下会生成代码以及 XML。如果修改了数据库再次生成，会重新生成并且覆盖 java 文件和 XML 文件。一般生成到指定目录复制过来。
