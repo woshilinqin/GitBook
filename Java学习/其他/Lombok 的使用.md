@@ -106,3 +106,22 @@ idea 选择离线安装即可。快捷键 ctrl + F12 查看生成的方法。
 
 - `@Slf4j`
   可以直接使用`log`日志对象。
+
+- `@Cleanup`如果要清理的对象类型没有close()方法，而是其他一些无参数方法，则可以指定此方法的名，必须无参数，@Cleanup(”dispose”)
+
+  ```java
+     @Cleanup FileInputStream fis = new FileInputStream(file);
+     fis.read();
+     
+     // 编译后的class文件
+     FileInputStream fis = new FileInputStream(file);
+          try {
+              fis.read();
+          } finally {
+              if (Collections.singletonList(fis).get(0) != null) {
+                  fis.close();
+              }
+          }
+  ```
+
+  
