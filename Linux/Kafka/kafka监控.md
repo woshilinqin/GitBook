@@ -4,7 +4,7 @@
 
 kafka-manager[github地址](https://github.com/yahoo/kafka-manager/releases/tag/1.3.3.22)，找到对应的releases版本。
 
-<div align="left"><img src="assets/1551164365553.png" style="zoom:65%">
+<div align="left"><img src="https://i.loli.net/2019/06/13/5d0235286488d28839.jpg" style="zoom:65%">
 
 ```shell
 weget https://github.com/yahoo/kafka-manager/archive/1.3.3.22.tar.gz
@@ -64,4 +64,4 @@ kill -9 %1
 
 页面访问默认9000端口 [http://193.112.10.38:9000/](http://193.112.10.38:9000/)
 
-![kafka-manager](assets/1551168572056.png)
+![kafka-manager](https://i.loli.net/2019/06/13/5d023528a8af351676.jpg)

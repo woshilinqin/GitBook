@@ -4,7 +4,7 @@
 
 [下载二进制包](http://kafka.apache.org/downloads)
 
-![下载二进制包](assets/1551084352010.png)
+![下载二进制包](https://i.loli.net/2019/06/13/5d0235292fb1430282.jpg)
 
 #### 2.解压
 
@@ -31,4 +31,3 @@ ps：最好不要用kafka自带的，可以先搭建好zookeeper集群
 ```shell
 ./bin/zookeeper-server-start.sh config/zookeeper.properties & 
 ```
-

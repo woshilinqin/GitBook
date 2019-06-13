@@ -6,7 +6,7 @@
 
 **生产者(Producers)：**生产者发送到一个特定的Topic的分区上，消息将会按照它们发送的顺序依次加入，也就是说，如果一个消息M1和M2使用相同的producer发送，M1先发送，那么M1将比M2的offset低，并且优先的出现在日志中
 
-![screenshot](assets/KmCudlf7D-OAEjy8AABoxGLnMI4173.png)
+![screenshot](https://i.loli.net/2019/06/13/5d023528e574f48050.jpg)
 
 **消费者组 （consumer group）**`队列`：包含一个或者多个消费者，按在名称命名。
 

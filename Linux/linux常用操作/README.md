@@ -35,7 +35,7 @@ curl -X POST -H 'Content-type:application/xml' -d @/tmp/data.xml https://apitest
 -X :指定什么类型请求get/post/put。。。
 -H :--hearder增加头信息 
 
-![xml信息](assets/1552463476139.png)
+![xml信息](https://i.loli.net/2019/06/13/5d0235295e4fe33478.jpg)
 
 ###### post发送json
 
@@ -127,4 +127,3 @@ rpm -ivh xxxxx --nodeps --force              不检查依赖关系，强制安�
 ```shell
 rpm --force -ivh your-package.rpm  		     强制安装：安装出现...conflict with ... 有冲突可以加上
 ```
-

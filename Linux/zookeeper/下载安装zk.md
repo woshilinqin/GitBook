@@ -16,13 +16,13 @@ dataLogDir=/tmp/zookeeper/log
 
 前者表示数据文件，后者是日志，也可以修改一下默认端口。
 
-![zoo.cfg配置](assets/1551085560519.png)
+![zoo.cfg配置](https://i.loli.net/2019/06/13/5d02367b3fc7c75630.jpg)
 
 **添加环境变量**：
 
 > `vim /etc/profile`
 
-![环境变量](assets/1551087006708.png)
+![环境变量](https://i.loli.net/2019/06/13/5d02367b6e58048762.jpg)
 
 > 重载：source /etc/profile
 > 查看：echo $PATH
@@ -52,4 +52,3 @@ server.2=192.168.180.133:2888:3888
 ```
 
 > server.A=B：C：D：其中 A 是一个数字，表示这个是第几号服务器；B 是这个服务器的 ip 地址；C 表示的是这个服务器与集群中的 Leader 服务器交换信息的端口；D 表示的是万一集群中的 Leader 服务器挂了，需要一个端口来重新进行选举，选出一个新的 Leader，而这个端口就是用来执行选举时服务器相互通信的端口
-
