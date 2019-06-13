@@ -39,7 +39,7 @@ dataLogDir=/tmp/zookeeper/log
 #### 集群配置：
 
 如果你是集群的话，请在clientPort下面添加服务器的ip。如
-集群配置：在zookeeper目录下，创建data目录。在3个zookeeper节点中data目录下分别创建mypid[^1]
+集群配置：在zookeeper目录下，创建data目录，对应`dataDir`配置。在3个zookeeper节点中data目录下分别创建mypid[^1]
 
 [^1]: echo 1 >/tmp/mypid
 
