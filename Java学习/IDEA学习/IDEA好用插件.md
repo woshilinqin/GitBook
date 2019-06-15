@@ -12,9 +12,9 @@
 
 自定义日志颜色，idea控制台可以彩色显示各种级别的log，安装完成后，在console中右键就能打开。
 
-![1556379112030](assets/1556379112030.png)
+![1556379112030](https://i.loli.net/2019/06/15/5d046f423637e77031.jpg)
 
-![1556379130150](assets/1556379130150.png)
+![1556379130150](https://i.loli.net/2019/06/15/5d046f429912c22275.jpg)
 
 ### 6.GenerateAllSetter
 
@@ -26,7 +26,7 @@ idea背景修改插件，让你的idea与众不同，可以设置自己喜欢的
 
 安装成功之后重启，菜单栏的VIew标签>点击Set Background Image(没安装插件是没有这个标签的)，在弹框中路由选择到本地图片，点击OK即可。
 
-![1556379188546](assets/1556379188546.png)
+![1556379188546](https://i.loli.net/2019/06/15/5d046f42d461937451.jpg)
 
 ### 9.Alibaba Java Coding Guidelines
 
@@ -34,13 +34,8 @@ idea背景修改插件，让你的idea与众不同，可以设置自己喜欢的
 
 根据Atom的插件activate-power-mode的效果移植到IDEA上
 
-![img](assets/640.gif)
+![img](https://i.loli.net/2019/06/15/5d046f435bd9f75624.jpg)
 
 写代码是整个屏幕都在抖动，activate-power-mode是白的的，Power mode II色彩更酷炫点。
 
 ### 11.RestfulToolkit
-
-
-
-
-

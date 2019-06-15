@@ -2,7 +2,7 @@
 
 1、在IntelliJ IDEA的run/debug configuration中增加一个remote类型的配置
 
-![](assets/remote-debug.gif)
+![](https://i.loli.net/2019/06/15/5d046f44430d517303.jpg)
 
 
 
@@ -22,7 +22,7 @@ Listening for transport dt_socket at address: 5005
 
 （ps：启动应用是卡着，点击debug后才能启动应用完成！）
 
-![1554988102257](assets/1554988102257.png)
+![1554988102257](https://i.loli.net/2019/06/15/5d046f447825855556.jpg)
 
 
 
@@ -33,4 +33,3 @@ Listening for transport dt_socket at address: 5005
 ```shell
 -Djava.rmi.server.hostname=192.168.13.52 -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=1099 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false
 ```
-

@@ -181,6 +181,4 @@ Predicate predicate = new Predicate() {
 
   图解：
 
-  ![1558192452641](assets/1558192452641.png)
-
-
+![1558192452641](https://i.loli.net/2019/06/15/5d046f45d36b519497.jpg)

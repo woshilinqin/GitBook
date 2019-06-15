@@ -8,7 +8,7 @@ git tags
 
 git log --oneline
 
-![gittag](assets/1552467714894.png)
+![gittag](https://i.loli.net/2019/06/15/5d046ed9cdeb856886.jpg)
 
 ###### 3.根据简要id新增tab，红色的根据表示推送到指定的commitid后
 
@@ -21,18 +21,18 @@ git tab xxx
 
 git push --tag
 
-![push](assets/1552467798509.png)
+![push](https://i.loli.net/2019/06/15/5d046eda0f4d597601.jpg)
 
 ###### 5.效果
 
-![github效果](assets/1552467827816.png)
+![github效果](https://i.loli.net/2019/06/15/5d046eda49f8640681.jpg)
 
 ###### 6.删除&修改
 
 本地删除tag
 git tag -d
 
-![删除tag](assets/1552467856500.png)
+![删除tag](https://i.loli.net/2019/06/15/5d046eda7882e33886.jpg)
 
 远程 tag 的删除
 git push Dubbo --delete v1.0.0

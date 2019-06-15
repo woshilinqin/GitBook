@@ -10,7 +10,7 @@
 
 Git的工作流程
 
-![图片来源网络](assets/1552467555151.png)
+![图片来源网络](https://i.loli.net/2019/06/15/5d046ed9363b121722.jpg)
 
 Git add
 添加到缓存里面
@@ -56,4 +56,3 @@ git commit -m ".gitignore is now working"
 ```
 git push -u origin master
 ```
-
