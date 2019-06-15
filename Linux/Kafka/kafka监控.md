@@ -4,7 +4,8 @@
 
 kafka-manager[github地址](https://github.com/yahoo/kafka-manager/releases/tag/1.3.3.22)，找到对应的releases版本。
 
-<div align="left"><img src="https://i.loli.net/2019/06/13/5d0235286488d28839.jpg" style="zoom:65%">
+![github版本](https://i.loli.net/2019/06/13/5d0235286488d28839.jpg)
+
 
 ```shell
 weget https://github.com/yahoo/kafka-manager/archive/1.3.3.22.tar.gz
