@@ -43,6 +43,8 @@ git remote -v
 
 ```
 git rm -r --cached .
+// 删除远程的某个文件夹
+git rm -r --cached target
 ```
 
 ```
@@ -56,3 +58,11 @@ git commit -m ".gitignore is now working"
 ```
 git push -u origin master
 ```
+
+###### 还原
+
+```
+//git撤销本地所有未提交的更改
+git reset --hard
+```
+
