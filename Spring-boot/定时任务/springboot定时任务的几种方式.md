@@ -42,7 +42,7 @@ public class Task {
 
 这是一种非常简单的实现方式。但是有个缺点。如果多个定时任务一起执行，实际上是一个个任务同一个线程搞定的，如果其中一个出了异常，串行就走不下去了。
 
-![网络来源图片](assets/1550219739697.png)
+![网络来源图片](https://i.loli.net/2019/06/15/5d0488d11bd3543327.jpg)
 
 
 
@@ -118,4 +118,3 @@ public class CompleteScheduleConfig implements SchedulingConfigurer {
 数据库就一个单独的`cron`字段。
 
 测试动态修改cron，执行定时任务的触发时间也相应改变。
-

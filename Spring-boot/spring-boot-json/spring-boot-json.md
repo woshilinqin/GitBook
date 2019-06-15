@@ -4,7 +4,7 @@
 
 除了 Spring Boot 必须自带的 parent 依赖外，仅仅只需要加入这个 `spring-boot-starter-web` 包即可，它会自动包含所有 JSON 处理的包。全局的 json 输出都是使用这个配置。只要 controller 添加注解`@RestController`或者`@ResponseBody` 即可。
 
-![jackson](assets/1557983539415.png)
+![jackson](https://i.loli.net/2019/06/15/5d0488cedb02241537.jpg)
 
 ###### 2.entity
 
@@ -84,4 +84,3 @@ public class FastJsonConfiguration extends WebMvcConfigurerAdapter
 > WriteMapNullValue：是否输出值为null的字段,默认为false。
 > WriteNullBooleanAsFalse：Boolean字段如果为null,输出为false,而非null
 > DisableCircularReferenceDetect ：消除对同一对象循环引用的问题，默认为false（如果不配置有可能会进入死循环）
-
