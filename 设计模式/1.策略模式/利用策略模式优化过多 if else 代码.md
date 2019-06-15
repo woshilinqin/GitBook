@@ -8,7 +8,7 @@
 
 在上一个计算机例子中。我们在业务中的使用如下，根据对应页面的输入来选择对应的实现类。
 
-![项目结构](assets/1549871155469.png)
+![项目结构](https://i.loli.net/2019/06/15/5d048f77187da44172.jpg)
 
 ```java
 @RestController
@@ -48,7 +48,7 @@ public class TestController {
 
 新增三个类：
 
-![新增类](assets/1549874918628.png)
+![新增类](https://i.loli.net/2019/06/15/5d048f775daf151184.jpg)
 
 
 

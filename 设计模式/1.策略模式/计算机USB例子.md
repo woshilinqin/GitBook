@@ -4,7 +4,7 @@
 
 比如：电脑接口，都支持USB。通过USB可以连接鼠标（mouse），键盘（keyboard），照相机（camera）等等。它还可以连接很多的外接设备。然后电脑就可以使用这些拓展出来的设备。
 
-![Pattern of Computer](assets/1549861132477.png)
+![Pattern of Computer](https://i.loli.net/2019/06/15/5d048f77cad7319988.jpg)
 
 
 
