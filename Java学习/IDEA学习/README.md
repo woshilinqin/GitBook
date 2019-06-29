@@ -58,6 +58,8 @@ ctrl + p 参数提示
 
 ctrl + ALT +  V 添加变量=
 
+ctrl + ALT +  C 魔法值定义静态变量
+
 ctrl + alt + p 替换变量为方法的参数
 
 ctrl + alt + o 去除无用 import

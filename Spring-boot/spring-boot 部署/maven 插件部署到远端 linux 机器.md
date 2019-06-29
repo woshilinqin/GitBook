@@ -3,9 +3,10 @@
 一般打包 jar 不是默认打包，默认打包会把所有的 lib 和配置打进去，但是一般只打源码即可。下面这个配置可以分离打包。
 
 ```xml
-<build>
+ <build>
         <!-- 指定打包的名字 -->
-        <finalName>spring-boot-application-config-location</finalName>
+        <finalName>${project.artifactId}</finalName>
+        <!--Maven会从项目的src/main/resources目录下查找资源，加载配置，不能随便改，这个如果不行可以去掉，使用下面的 复制配置插件-->
         <resources>
             <!--把配置文件放在jar包外面的config文件夹，方便修改-->
             <resource>
@@ -18,12 +19,7 @@
             </resource>
         </resources>
 
-        <extensions>
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-ssh</artifactId>
-            </extension>
-        </extensions>
+
         <plugins>
             <!--打包操作-->
             <plugin>
@@ -37,7 +33,7 @@
                             <addClasspath>true</addClasspath>
                             <!--classpathPrefix指定生成的Manifest文件中Class-Path依赖lib前面都加上路径,构建出lib/xx.jar-->
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>com.SpringBootAplicationConfigApplication</mainClass>
+                            <mainClass>com.GitbookApplication</mainClass>
                         </manifest>
                     </archive>
                     <!--打包排除-->
@@ -73,8 +69,54 @@
                     </execution>
                 </executions>
             </plugin>
-		</build>
+            
+              <!-- 复制配置文件 -->
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.2</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <!-- 触发条件 -->
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.basedir}/target/${project.artifactId}/config</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources</directory>
+                                    <includes>
+                                        <include>application.yml</include>
+                                    </includes>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 ```
+
+当配置文件是 YAML 时，打包后会报错
+
+> Caused by: java.lang.IllegalStateException: Attempted to load applicationConfig: [classpath:/application.yml] but snakeyaml was not found on the classpath
+
+新增依赖支持即可。
+
+```xml
+<dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+ </dependency>
+```
+
+------
+
+
 
 ###### 插件上传部署
 
